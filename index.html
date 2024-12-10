@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Style Sheet -->
+    <link rel="stylesheet" href="./css/index.css" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="./css/all.min.css" />
+    <!-- BootStrap Sheet -->
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Favicon Title -->
+    <link
+      rel="shortcut icon"
+      href="./images/todo-icon.png"
+      type="image/x-icon"
+    />
+    <title>Todo List</title>
+  </head>
+  <body>
+    <!-- Pop Up -->
+    <div
+      id="popup"
+      class="popup position-fixed z-3 w-100 h-100 d-none justify-content-center align-items-center"
+    >
+      <div
+        class="popup_content d-flex flex-column justify-content-center align-items-center row-gap-3 p-2 rounded-4"
+      >
+        <h5 class="text-dark">Please fill in the required information ..!</h5>
+        <div class="spinner"></div>
+      </div>
+    </div>
+    <!-- Pop Up -->
+    <!-- Start header -->
+    <div class="header">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container">
+          <a class="navbar-brand fs-2" href="#">Daily Task</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div
+              class="form d-flex ms-auto d-flex justify-content-center align-items-center column-gap-2"
+            >
+              <input
+                id="search_input"
+                class="form-control me-2"
+                type="search"
+                placeholder="Search"
+              />
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <!-- End header -->
+    <!-- sub header -->
+    <div class="sub_nav sec_padding">
+      <div
+        class="container position-relative d-flex justify-content-around align-items-center"
+      >
+        <div
+          class="logo d-flex justify-content-start align-items-center column-gap-2"
+        >
+          <i class="fa-solid fa-list-check fs-4"></i>
+          <span class="fs-3 fw-bold">All Of Tasks</span>
+        </div>
+        <div class="dark_mood">
+          <i id="icon_mood" class="fa-solid fa-lightbulb fs-4"></i>
+        </div>
+      </div>
+    </div>
+    <!-- sub header -->
+    <!-- home -->
+    <div class="home_content sec_padding">
+      <div class="container">
+        <div class="bttn_add d-flex justify-content-center align-items-center">
+          <button id="btn_add" class="btn">
+            <i class="fa-solid fa-file-circle-plus"></i>
+            Add New Task
+          </button>
+        </div>
+        <div class="row gy-4 mt-5">
+          <div class="col-md-4" id="nextUp">
+            <div class="card_item rounded-3">
+              <div
+                class="card_header d-flex justify-content-between align-items-center ps-3 pe-3 rounded-3"
+              >
+                <h2 class="fs-3 fw-bolder">Next Up</h2>
+                <span id="counter-nextUp" class="fs-3 fw-bolder"></span>
+              </div>
+              <div class="tasks p-2"></div>
+            </div>
+          </div>
+          <div class="col-md-4" id="inProgress">
+            <div class="card_item rounded-3">
+              <div
+                class="card_header d-flex justify-content-between align-items-center ps-3 pe-3 rounded-3"
+              >
+                <h2 class="fs-3 fw-bolder">In Progress</h2>
+                <span id="counter-inProgress" class="fs-3 fw-bolder"></span>
+              </div>
+              <div class="tasks p-2"></div>
+            </div>
+          </div>
+          <div class="col-md-4" id="done">
+            <div class="card_item rounded-3">
+              <div
+                class="card_header d-flex justify-content-between align-items-center ps-3 pe-3 rounded-3"
+              >
+                <h2 class="fs-3 fw-bolder">Done</h2>
+                <span id="counter-done" class="fs-3 fw-bolder"></span>
+              </div>
+              <div class="tasks p-2"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      id="form_add"
+      class="form_add position-fixed d-none justify-content-center align-items-center"
+    >
+      <div class="container">
+        <form class="form-control my-4 p-3 d-flex flex-column">
+          <div class="section_inputs mb-3">
+            <label class="fs-5 fw-semibold" for="section"> Section </label>
+            <input
+              id="section"
+              list="category-section"
+              type="text"
+              placeholder="Chose Your Section"
+              name="section"
+              class="form-control"
+            />
+            <datalist id="category-section">
+              <option value="nextUp"></option>
+              <option value="inProgress"></option>
+              <option value="done"></option>
+            </datalist>
+          </div>
+          <div class="category_inputs mb-3">
+            <label class="fs-5 fw-semibold" for="category"> category </label>
+            <input
+              id="category"
+              list="category-task"
+              type="text"
+              placeholder="Chose Your Category"
+              name="section"
+              class="form-control"
+            />
+            <datalist id="category-task">
+              <option value="education"></option>
+              <option value="health"></option>
+              <option value="finance"></option>
+              <option value="productivity"></option>
+            </datalist>
+          </div>
+          <div class="title_input mb-3">
+            <label class="fs-5 fw-semibold" for="title"> Task Title </label>
+            <input
+              id="title"
+              type="text"
+              placeholder="Write Your Title"
+              name="title"
+              class="form-control"
+            />
+          </div>
+          <div class="description_input mb-3">
+            <label class="fs-5 fw-semibold" for="description">
+              Task Description
+            </label>
+            <textarea
+              id="description"
+              type="text"
+              rows="5"
+              placeholder="Write Your description"
+              name="description"
+              class="form-control"
+            ></textarea>
+          </div>
+          <div
+            class="btns d-flex justify-content-center align-items-center column-gap-2"
+          >
+            <button
+              id="btn_addTask"
+              class="btn btn_addTask d-block"
+              type="button"
+              onclick="addNewTask()"
+            >
+              Add Task
+            </button>
+            <button
+              id="btn_updateTask"
+              class="btn btn-outline-info d-none text-dark btn_updateTask"
+              type="button"
+              onclick="updateTask()"
+            >
+              Update Task
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- home -->
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="./js/index.js"></script>
+  </body>
+</html>
