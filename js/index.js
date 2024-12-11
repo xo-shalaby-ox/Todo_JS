@@ -128,6 +128,7 @@ function updateTask() {
 
     updateBtn.classList.replace("d-block", "d-none");
     addTask.classList.replace("d-none", "d-block");
+    reset();
 }
 
 function searchTask() {

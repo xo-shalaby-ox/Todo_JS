@@ -90,14 +90,14 @@ i{
 }
 /* header */
 /* sub header */
-.sub_nav .container::before{
+.sub_nav .nav-content::before{
     content: "";
     position: absolute;
-    width: 60%;
-    height: 2px;
-    background-color: var(--sub-color);
-    bottom: -5px;
-    left: 260px;
+    width: 70%;
+    height: 1px;
+    bottom: -7px;
+    left: 15%;
+    background-color: #2c2c2c6b;
 }
 /* sub header */
 /* home */
